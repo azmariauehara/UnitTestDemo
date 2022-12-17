@@ -25,8 +25,10 @@ jobs:
         dotnet-version: 2.1
     - name: Restore dependencies
       run: dotnet restore ${{github.workspace}}/src/UnitTestDemo.WebUi/UnitTestDemo.WebUi.csproj
-    - name: Build
+    - name: Build WebUi
       run: dotnet build ${{github.workspace}}/src/UnitTestDemo.WebUi/UnitTestDemo.WebUi.csproj --configuration Release --no-restore
+    - name: Build Solution
+      run: dotnet build ${{github.workspace}}/UnitTestDemo.sln
     - name: Test
       run: dotnet test ${{github.workspace}}/test/UnitTestDemo.Tests/UnitTestDemo.Tests.csproj --no-restore --no-build --verbosity normal
     - name: Publish
