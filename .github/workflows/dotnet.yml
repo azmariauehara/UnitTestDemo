@@ -4,7 +4,7 @@
 name: .NET
 
 env:
-  AZURE_WEBAPP_NAME: webapp-scstrategy-app
+  AZURE_WEBAPP_NAME: unittestdemoapp
   
 on:
   push:
