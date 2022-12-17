@@ -30,11 +30,11 @@ jobs:
     - name: Test
       run: dotnet test ${{github.workspace}}/test/UnitTestDemo.Tests/UnitTestDemo.Tests.csproj --no-restore --no-build --verbosity normal
     - name: Publish
-      run: dotnet publish ${{github.workspace}}/src/UnitTestDemo.WebUi/UnitTestDemo.WebUi.csproj -c Release -o unittestdemopkg
+      run: dotnet publish ${{github.workspace}}/src/UnitTestDemo.WebUi/UnitTestDemo.WebUi.csproj -c Release -o unittestdemo_pkg
     - name: Deploy to Azure App unittestdemoapp
       uses: azure/webapps-deploy@v2
       with: 
         app-name: ${{ env.AZURE_WEBAPP_NAME }}
         publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-        package: './unittestdemopkg'
+        package: './unittestdemo_pkg'
     
