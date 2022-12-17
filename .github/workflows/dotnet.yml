@@ -21,13 +21,13 @@ jobs:
       with:
         dotnet-version: 2.1
     - name: Restore dependencies
-      run: dotnet restore ${{github.workspace}}/websolution/src/UnitTestDemo.WebUi/UnitTestDemo.WebUi.csproj
+      run: dotnet restore ${{github.workspace}}/src/UnitTestDemo.WebUi/UnitTestDemo.WebUi.csproj
     - name: Build
-      run: dotnet build ${{github.workspace}}/websolution/src/UnitTestDemo.WebUi/UnitTestDemo.WebUi.csproj --configuration Release --no-restore
+      run: dotnet build ${{github.workspace}}/src/UnitTestDemo.WebUi/UnitTestDemo.WebUi.csproj --configuration Release --no-restore
     - name: Test
-      run: dotnet test ${{github.workspace}}/websolution/src/UnitTestDemo.WebUi/UnitTestDemo.WebUi.csproj --no-restore --no-build --verbosity normal
+      run: dotnet test ${{github.workspace}}/test/UnitTestDemo.Tests/UnitTestDemo.Tests.csproj --no-restore --no-build --verbosity normal
     - name: Publish
-      run: dotnet publish ${{github.workspace}}/websolution/src/UnitTestDemo.WebUi/UnitTestDemo.WebUi.csproj -c Release -o unittestdemopkg
+      run: dotnet publish ${{github.workspace}}/src/UnitTestDemo.WebUi/UnitTestDemo.WebUi.csproj -c Release -o unittestdemopkg
     - name: Deploy to Azure App unittestdemoapp
       uses: azure/webapps-deploy@v2
       with: 
